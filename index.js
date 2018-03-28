@@ -7,10 +7,20 @@ const port = 8000
 app.get('*', (req, res) => {
 
   const time = (req.path).slice(1)
+  let naturl = null
+  let unix = null
 
-  const natural = moment.unix(time)
+  if (time === unixStr) {
+    natural = moment.unix(time).format('MMMM DD, YYYY')
+    unix = time
+  }
+
+  if (time === naturalStr) {
+
+  }
 
   const timeStamp = {
+    unix,
     natural
   }
   res.json(timeStamp)
