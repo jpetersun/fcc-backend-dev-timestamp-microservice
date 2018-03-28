@@ -6,6 +6,7 @@
   "author": "James Peterson <jpeterson903@yahoo.com>",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "moment": "^2.21.0"
   }
 }
