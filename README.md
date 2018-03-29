@@ -2,8 +2,8 @@
 
 ## Input:
 ```
-https://timestamp-ms.herokuapp.com/March%2029,%202018
-https://timestamp-ms.herokuapp.com/1522306800
+https://immense-shore-15010.herokuapp.com/March%2029,%202018
+https://immense-shore-15010.herokuapp.com/1522306800
 ```
 
 ## Output:
