@@ -14,7 +14,7 @@ app.get('*', (req, res) => {
 
   if (unixStr) {
     unix = Number(time)
-    natural = moment.unix(unix).utc().format('LL')
+    natural = moment.unix(unix).format('LL')
   }
 
   if (naturalStr) {
