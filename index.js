@@ -2,7 +2,7 @@ const express = require('express')
 const moment = require('moment')
 
 const app = express()
-const port = 8000
+const PORT = process.env.PORT || 8000
 
 app.get('*', (req, res) => {
   const time = decodeURI((req.path).slice(1))
@@ -31,4 +31,4 @@ app.get('*', (req, res) => {
   res.json(timeStamp)
 })
 
-app.listen(port, () => console.log(`Listening on port: ${port}`))
+app.listen(PORT, () => console.log(`Listening on port: ${PORT}`))
