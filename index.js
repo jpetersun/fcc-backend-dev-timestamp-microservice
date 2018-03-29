@@ -1,26 +1,34 @@
 const express = require('express')
-const useragent = require('useragent')
-const requestIp = require('request-ip')
+const moment = require('moment')
 
 const app = express()
 const PORT = process.env.PORT || 8000
 
-app.use(requestIp.mw())
+app.get('*', (req, res) => {
+  const time = decodeURI((req.path).slice(1))
+  const unixStr = /\b\d{10}\b/.test(time)
+  const naturalStr = /\b\w+\s\d{2},\s\d{4}\b/.test(time)
 
-app.get('/api/whoami', (req, res) => {
-  const agent = useragent.parse(req.headers['user-agent'])
+  let unix = null
+  let natural = null
 
-  const ipaddress = req.clientIp
-  const software = agent.os.toString()
-  const language = req.headers['accept-language'].slice(0,5)
-
-  const headerParser = {
-    ipaddress,
-    language,
-    software
+  if (unixStr) {
+    unix = Number(time)
+    natural = moment.unix(unix).format('LL')
   }
 
-  res.json(headerParser)
+  if (naturalStr) {
+    const date = new Date(time)
+    unix = Number(moment(date).format('X'))
+    natural = time
+  }
+
+  const timeStamp = {
+    unix,
+    natural
+  }
+
+  res.json(timeStamp)
 })
 
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`))
