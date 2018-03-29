@@ -2,7 +2,7 @@
   "name": "fcc-backend-dev-req-header-parser-microservice",
   "version": "1.0.0",
   "main": "index.js",
-  "repository": "https://github.com/jpetersun/fcc-backend-dev-timestamp-microservice.git",
+  "repository": "https://github.com/jpetersun/fcc-backend-dev-req-header-parser-microservice.git",
   "author": "James Peterson <jpeterson903@yahoo.com>",
   "license": "MIT",
   "dependencies": {
