@@ -6,7 +6,9 @@
   "author": "James Peterson <jpeterson903@yahoo.com>",
   "license": "MIT",
   "dependencies": {
-    "express": "^4.16.3"
+    "address": "^1.0.3",
+    "express": "^4.16.3",
+    "useragent": "^2.3.0"
   },
   "scripts": {
     "start": "node index.js"
