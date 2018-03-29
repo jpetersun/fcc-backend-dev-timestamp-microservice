@@ -12,5 +12,4 @@ https://immense-shore-15010.herokuapp.com/1522306800
   unix: 1522306800,
   natural: "March 29, 2018"
 }
-
 ```
