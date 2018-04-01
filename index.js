@@ -4,20 +4,20 @@ const moment = require('moment')
 const app = express()
 const PORT = process.env.PORT || 8000
 
-app.get('*', (req, res) => {
-  const time = decodeURI((req.path).slice(1))
-  const unixStr = /\b\d{10}\b/.test(time)
-  const naturalStr = /\b\w+\s\d{2},\s\d{4}\b/.test(time)
+app.get('/:time', (req, res) => {
+  const time = decodeURI(req.params.time)
+  const isUnixStr = /\b\d{10}\b/.test(time)
+  const isNaturalStr = /\b\w+\s\d{2},\s\d{4}\b/.test(time)
 
   let unix = null
   let natural = null
 
-  if (unixStr) {
+  if (isUnixStr) {
     unix = Number(time)
     natural = moment.unix(unix).format('LL')
   }
 
-  if (naturalStr) {
+  if (isNaturalStr) {
     const date = new Date(time)
     unix = Number(moment(date).format('X'))
     natural = time
