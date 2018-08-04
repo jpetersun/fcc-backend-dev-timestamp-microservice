@@ -6,6 +6,7 @@
   "author": "James Peterson <jpeterson903@yahoo.com>",
   "license": "MIT",
   "dependencies": {
+    "boom": "^7.2.0",
     "express": "^4.16.3",
     "moment": "^2.21.0",
     "request-ip": "^2.0.2",

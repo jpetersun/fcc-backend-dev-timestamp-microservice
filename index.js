@@ -1,34 +1,44 @@
 const express = require('express')
 const moment = require('moment')
+const boom = require('boom')
 
 const app = express()
 const PORT = process.env.PORT || 8000
 
-app.get('/:time', (req, res) => {
-  const time = decodeURI(req.params.time)
-  const isUnixStr = /\b\d{10}\b/.test(time)
-  const isNaturalStr = /\b\w+\s\d{2},\s\d{4}\b/.test(time)
+app.get('/api/timestamp/:time', (req, res, next) => {
+  const { time } = req.params
+  const isUnixTime = /\d+/.test(Number(time))
+  const isUTCTime = /\b\w{4}-\w{2}-\w{2}\b/.test(time)
+
+  if (!isUnixTime && !isUTCTime) {
+    return next(boom.badRequest('invalid date'))
+  }
 
   let unix = null
-  let natural = null
+  let utc = null
 
-  if (isUnixStr) {
+  if (isUnixTime) {
     unix = Number(time)
-    natural = moment.unix(unix).format('LL')
+    utc = moment.unix(unix).utc().format('YYYY-MM-DD')
   }
 
-  if (isNaturalStr) {
+  if (isUTCTime) {
     const date = new Date(time)
-    unix = Number(moment(date).format('X'))
-    natural = time
+    unix = Number(moment(date).utc().format('X'))
+    utc = time
   }
 
-  const timeStamp = {
+  const timeStamps = {
     unix,
-    natural
+    utc
   }
 
-  res.json(timeStamp)
+  res.json(timeStamps)
+})
+
+// error handler middleware using boom
+app.use((err, req, res, next) => {
+  return res.status(err.output.statusCode).json(err.output.payload)
 })
 
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`))
