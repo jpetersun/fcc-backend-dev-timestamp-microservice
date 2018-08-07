@@ -4,6 +4,11 @@ const boom = require('boom')
 
 const app = express()
 const PORT = process.env.PORT || 8000
+app.use(express.static('public'))
+
+app.get('/', (req, res) => {
+  res.sendFile(`${__dirname}/index.html`)
+})
 
 app.get('/api/timestamp/:time?', (req, res, next) => {
   // optional time parameter

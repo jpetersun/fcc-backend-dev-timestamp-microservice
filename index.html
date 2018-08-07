@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="/styles.css">
+  <title>FCC Timestamp Microservice</title>
+</head>
+<body>
+  <h2>FCC Timestamp Microservice</h2>
+  <p>The API endpoint is a GET request to <code>/api/timestamp/:time?</code></p>
+  <p>Validates a time string and returns a JSON response of the string formatted as UNIX time and UTC time. Invalid dates will return an error.</p>
+  <p>A time string is valid if can be successfully parsed by <code>new Date()</code>.</p>
+  <p>An empty time string will return the current time.</p>
+  <h3>Example Usage:</h3>
+  <p>Current Time: <a target="_blank" href="https://fcc-timestamp-microservice-jp.glitch.me/api/timestamp/">https://fcc-timestamp-microservice-jp.glitch.me/api/timestamp/</a></p>
+  <p>UNIX Time: <a target="_blank" href="https://fcc-timestamp-microservice-jp.glitch.me/api/timestamp/1460678400">https://fcc-timestamp-microservice-jp.glitch.me/api/timestamp/1460678400</a></p>
+  <p>UTC Time: <a target="_blank" href="https://fcc-timestamp-microservice-jp.glitch.me/api/timestamp/2016-04-15">https://fcc-timestamp-microservice-jp.glitch.me/api/timestamp/2016-04-15</a></p>
+  <h3>Example Output:</h3>
+  <pre><code>
+  {
+    unix: 1460678400,
+    utc: "2016-04-15T07:00:00.000Z"
+  }
+  </code></pre>
+  <h3>Example Error:</h3>
+  <pre><code>
+  {
+    statusCode: 400,
+    error: "Bad Request",
+    message: "Invalid Date"
+  }
+  </code></pre>
+</body>
+</html>
