@@ -20,6 +20,11 @@ yarn install
 npm start
 ```
 
+### Testing
+
+`yarn test`
+
+
 Local Demo: `localhost:8000/api/timestamp`
 
 Live Demo: https://fcc-timestamp-microservice-jp.glitch.me/api/timestamp/
