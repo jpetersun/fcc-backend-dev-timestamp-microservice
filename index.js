@@ -29,20 +29,20 @@ app.get('/api/timestamp/:time?', (req, res, next) => {
 
   if (isUnixTime) {
     unix = Number(time)
-    utc = moment.unix(unix).utc()
+    utc = moment.unix(unix).utc().format('YYYY-MM-DD')
   }
 
   if (!isUnixTime && time) {
     const date = new Date(time)
     unix = Number(moment(date).utc().format('X'))
-    utc = moment(time).utc()
+    utc = moment(time).utc().format('YYYY-MM-DD')
   }
 
   // no time parameter, use current time
   if (!time) {
     const date = new Date().toUTCString()
     unix = Number(moment(date).utc().format('X'))
-    utc = moment(date).utc()
+    utc = moment(date).utc().format('YYYY-MM-DD')
   }
 
   const timeStamps = {
@@ -55,8 +55,13 @@ app.get('/api/timestamp/:time?', (req, res, next) => {
 
 // error handler middleware using boom
 app.use((err, req, res, next) => {
-  console.log(err)
+  if (process.env.NODE_ENV === 'development') {
+    console.log(err)
+  }
+
   return res.status(err.output.statusCode).json(err.output.payload)
 })
 
 app.listen(PORT, () => console.log(`Listening on port: ${PORT}`))
+
+module.exports = app

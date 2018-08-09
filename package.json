@@ -7,12 +7,16 @@
   "license": "MIT",
   "dependencies": {
     "boom": "^7.2.0",
+    "chai": "^4.1.2",
     "express": "^4.16.3",
+    "mocha": "^5.2.0",
     "moment": "^2.21.0",
     "request-ip": "^2.0.2",
+    "supertest": "^3.1.0",
     "useragent": "^2.3.0"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "test" : "NODE_ENV=test mocha"
   }
 }

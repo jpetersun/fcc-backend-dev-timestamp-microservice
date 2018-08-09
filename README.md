@@ -35,7 +35,7 @@ Example Output:
 ```
 {
   unix: 1460678400,
-  utc: "2016-04-15T07:00:00.000Z"
+  utc: "2016-04-15"
 }
 ```
 Example Error:
