@@ -27,7 +27,7 @@ npm start
 
 Local Demo: `localhost:8000/api/timestamp`
 
-Live Demo: https://fcc-timestamp-microservice-jp.glitch.me/api/timestamp/
+Live Demo: https://fcc-timestamp-microservice-jp.glitch.me/
 
 Current Time: https://fcc-timestamp-microservice-jp.glitch.me/api/timestamp/
 
